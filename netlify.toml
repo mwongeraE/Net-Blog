@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "npm install -g autoprefixer postcss postcss-cli && hugo --gc --minify --buildDrafts=false"
+command = hugo --gc --minify 
 
 [context.deploy-preview.environment]
 HUGO_VERSION = "0.83.1"
