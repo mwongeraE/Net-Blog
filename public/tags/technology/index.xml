@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Technology on Mwongera Evans</title>
+    <link>https://aicurious.io/tags/technology/</link>
+    <description>Recent content in Technology on Mwongera Evans</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 04 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aicurious.io/tags/technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[DEV] Testing Software Page</title>
+      <link>https://aicurious.io/posts/testing-software-page/</link>
+      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://aicurious.io/posts/testing-software-page/</guid>
+      <description>This is an introduction course to self-driving cars and Apollo platform - The Android of Self-Driving Car. Through this course, you will be able to identify key parts of self-driving cars and get to know Apollo architecture. You will be able to utilize Apollo HD Map, localization, perception, prediction, planning and control, and start the learning path of building a self-driving car.
+My notes for this course:
+ Lecture 1: SCD Fundamentals Lecture 2: HD Maps Lecture 3: Localization Lecture 4: Perception Lecture 5: Prediction Lecture 6: Planning Lecture 7: Control  </description>
+    </item>
+    
+  </channel>
+</rss>
