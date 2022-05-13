@@ -1,8 +1,9 @@
 # set `baseurl` to your root domain
 # if you set it to "/" share icons won't work properly on production
-baseurl = "https://aicurious.io/"  # Include trailing slash
+baseurl = "https://test-blog-ciwr.onrender.com/"  # Include trailing slash
+relativeURLs = "True"
 title = "HugoCurious"
-author = "Viet-Anh Nguyen"
+author = "Mwongera Evans"
 #canonifyurls = true
 paginate = 8
 PaginatePath = "/posts/"

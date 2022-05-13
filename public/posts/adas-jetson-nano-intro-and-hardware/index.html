@@ -21,26 +21,26 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@vietanhdev">
 <meta name="twitter:title" content="Advanced driver-assistance system on Jetson Nano Part 1 - Intro &amp; Hardware design" />
-<meta property="og:url" content="https://aicurious.io/posts/adas-jetson-nano-intro-and-hardware/" />
+<meta property="og:url" content="https://test-blog-ciwr.onrender.com/posts/adas-jetson-nano-intro-and-hardware/" />
 <meta property="og:title" content="Advanced driver-assistance system on Jetson Nano Part 1 - Intro &amp; Hardware design" />
 <meta property="og:description" content="Recently, I have built a prototype of an advanced driver-assistance system (ADAS) using a Jetson Nano computer. In this post, I will introduce my ADAS project …" />
-<meta property="og:image" content="https://aicurious.io/posts/adas-jetson-nano-intro-and-hardware/thumbnail.png" />
-<link rel="apple-touch-icon" sizes="180x180" href='https://aicurious.io/icons/apple-touch-icon.png'>
-<link rel="icon" type="image/png" sizes="32x32" href='https://aicurious.io/icons/favicon-32x32.png'>
-<link rel="manifest" href='https://aicurious.io/icons/site.webmanifest'>
-<link rel="mask-icon" href='https://aicurious.io/safari-pinned-tab.svg' color="#002538">
+<meta property="og:image" content="https://test-blog-ciwr.onrender.com/posts/adas-jetson-nano-intro-and-hardware/thumbnail.png" />
+<link rel="apple-touch-icon" sizes="180x180" href='https://test-blog-ciwr.onrender.com/icons/apple-touch-icon.png'>
+<link rel="icon" type="image/png" sizes="32x32" href='https://test-blog-ciwr.onrender.com/icons/favicon-32x32.png'>
+<link rel="manifest" href='https://test-blog-ciwr.onrender.com/icons/site.webmanifest'>
+<link rel="mask-icon" href='https://test-blog-ciwr.onrender.com/safari-pinned-tab.svg' color="#002538">
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://aicurious.io/posts/adas-jetson-nano-intro-and-hardware/">
+<link rel="canonical" href="https://test-blog-ciwr.onrender.com/posts/adas-jetson-nano-intro-and-hardware/">
     
     
-    <link rel="preload" href="https://aicurious.io/css/styles.css" integrity = "" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://aicurious.io/js/bundle.min.2f0b59b1dfdaf78b5a983152cca57c5d238178ce262268c3a511d19dc04f1dee770beb9ca2a833f2cd92967dc8bcecdb6c413ff82cac874b1bf473ad2f57db4c.js" as="script" integrity=
-    "sha512-LwtZsd/a94tamDFSzKV8XSOBeM4mImjDpRHRncBPHe53C&#43;ucoqgz8s2Sln3IvOzbbEE/&#43;Cysh0sb9HOtL1fbTA==" crossorigin="anonymous">
+    <link rel="preload" href="https://test-blog-ciwr.onrender.com/css/styles.css" integrity = "" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://test-blog-ciwr.onrender.com/js/bundle.min.740886abfe4b690e35421b2b670c7a7ae400eb450bb638acf55dd5852c3ba47290801edd63419ec7a68d0955069d13c54311f65d949018bf20ed80402f4d2973.js" as="script" integrity=
+    "sha512-dAiGq/5LaQ41QhsrZwx6euQA60ULtjis9V3VhSw7pHKQgB7dY0Gex6aNCVUGnRPFQxH2XZSQGL8g7YBAL00pcw==" crossorigin="anonymous">
 
     
-    <link rel="stylesheet" type="text/css" href="https://aicurious.io/css/styles.css" integrity="" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://test-blog-ciwr.onrender.com/css/styles.css" integrity="" crossorigin="anonymous">
     
   </head>
   
@@ -52,8 +52,8 @@
 
 <header id="top-navbar" class="nav_header" >
   <nav class="nav">
-    <a href='https://aicurious.io/' class="nav_brand nav_item">
-      <img alt="Mwongera Evans" src="https://aicurious.io/logoo.png" class="logo">
+    <a href='https://test-blog-ciwr.onrender.com/' class="nav_brand nav_item">
+      <img alt="Mwongera Evans" src="https://test-blog-ciwr.onrender.com/logoo.png" class="logo">
         <span class="site-title">Mwongera Evans</span>
       <div class="nav_close">
         <div>
@@ -73,16 +73,16 @@
         
 
   <div class="nav_parent">
-    <a href="https://aicurious.io/" class="nav_item">Blog </a>
+    <a href="https://test-blog-ciwr.onrender.com/" class="nav_item">Blog </a>
   </div>
   <div class="nav_parent">
-    <a href="https://aicurious.io/notes/" class="nav_item">Notes </a>
+    <a href="https://test-blog-ciwr.onrender.com/notes/" class="nav_item">Notes </a>
   </div>
   <div class="nav_parent">
-    <a href="https://aicurious.io/about/" class="nav_item">Author </a>
+    <a href="https://test-blog-ciwr.onrender.com/about/" class="nav_item">Author </a>
   </div>
   <div class="nav_parent">
-    <a href="https://aicurious.io/links/" class="nav_item">Links <img src='https://aicurious.io/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://test-blog-ciwr.onrender.com/links/" class="nav_item">Links <img src='https://test-blog-ciwr.onrender.com/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://aicurious.io/" class="nav_child nav_item">AICurious</a>
@@ -90,10 +90,10 @@
     </div>
   </div>
   <div class="nav_parent">
-    <a href="https://aicurious.io/contact/" class="nav_item"><img src="/icons/mail.svg" style="height:1.2rem; display: inline; margin: 0;"> </a>
+    <a href="https://test-blog-ciwr.onrender.com/contact/" class="nav_item"><img src="../../icons/mail.svg" style="height:1.2rem; display: inline; margin: 0;"> </a>
   </div>
   <div class="nav_parent">
-    <a href="https://aicurious.io/search/" class="nav_item"><img src="/icons/search.svg" style="height:1.2rem; display: inline; margin: 0;"> </a>
+    <a href="https://test-blog-ciwr.onrender.com/search/" class="nav_item"><img src="../../icons/search.svg" style="height:1.2rem; display: inline; margin: 0;"> </a>
   </div>
       
 <div class='follow'>
@@ -119,21 +119,21 @@
 </svg>
   <span class="post_date">
     Sep 10, 2020</span>
-    <a href='https://aicurious.io/tags/adas' class="post_tag button button_translucent">ADAS
+    <a href='https://test-blog-ciwr.onrender.com/tags/adas' class="post_tag button button_translucent">ADAS
     </a>
-    <a href='https://aicurious.io/tags/jetson-nano' class="post_tag button button_translucent">Jetson Nano
+    <a href='https://test-blog-ciwr.onrender.com/tags/jetson-nano' class="post_tag button button_translucent">Jetson Nano
     </a>
 </div>
 
     
 <div class="post_share">
   Share on:
-  <a href="https://twitter.com/intent/tweet?text=Advanced%20driver-assistance%20system%20on%20Jetson%20Nano%20Part%201%20-%20Intro%20%26%20Hardware%20design&url=https%3a%2f%2faicurious.io%2fposts%2fadas-jetson-nano-intro-and-hardware%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+  <a href="https://twitter.com/intent/tweet?text=Advanced%20driver-assistance%20system%20on%20Jetson%20Nano%20Part%201%20-%20Intro%20%26%20Hardware%20design&url=https%3a%2f%2ftest-blog-ciwr.onrender.com%2fposts%2fadas-jetson-nano-intro-and-hardware%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
   </a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2faicurious.io%2fposts%2fadas-jetson-nano-intro-and-hardware%2f&t=Advanced%20driver-assistance%20system%20on%20Jetson%20Nano%20Part%201%20-%20Intro%20%26%20Hardware%20design" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2ftest-blog-ciwr.onrender.com%2fposts%2fadas-jetson-nano-intro-and-hardware%2f&t=Advanced%20driver-assistance%20system%20on%20Jetson%20Nano%20Part%201%20-%20Intro%20%26%20Hardware%20design" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -143,7 +143,7 @@
   <use xlink:href="#linkedin"></use>
 </svg>
   </a>
-  <a href="https://aicurious.io/posts/adas-jetson-nano-intro-and-hardware/" title="Copy Link" class="link link_yank">
+  <a href="https://test-blog-ciwr.onrender.com/posts/adas-jetson-nano-intro-and-hardware/" title="Copy Link" class="link link_yank">
     <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -151,7 +151,7 @@
 </div>
 
     
-    <div class="js-toc-content"><p>Recently, I have built a prototype of an advanced driver-assistance system (ADAS) using a <a href="/posts/2020-04-02-thiet-lap-ban-dau-cho-jetson-nano/">Jetson Nano computer</a>. In this project, I have successfully deployed <strong>3 deep neural networks</strong>  and some <strong>computer vision algorithms</strong> on a <a href="https://www.nvidia.com/en-us/autonomous-machines/jetson-store/">super cheap hardware of Jetson Nano</a>. I decided to write this post series to share about how this system was designed and implemented. In this series, I will introduce the overall design of the system, 3 deep neural networks I used for environment analysis and some tutorials on <a href="https://developer.nvidia.com/tensorrt">TensorRT</a> - the core technology to optimize neural networks for NVIDIA's system. In this post, let's get started with an introduction to my project and the hardware design of this system.</p>
+    <div class="js-toc-content"><p>Recently, I have built a prototype of an advanced driver-assistance system (ADAS) using a <a href="../../posts/2020-04-02-thiet-lap-ban-dau-cho-jetson-nano/">Jetson Nano computer</a>. In this project, I have successfully deployed <strong>3 deep neural networks</strong>  and some <strong>computer vision algorithms</strong> on a <a href="https://www.nvidia.com/en-us/autonomous-machines/jetson-store/">super cheap hardware of Jetson Nano</a>. I decided to write this post series to share about how this system was designed and implemented. In this series, I will introduce the overall design of the system, 3 deep neural networks I used for environment analysis and some tutorials on <a href="https://developer.nvidia.com/tensorrt">TensorRT</a> - the core technology to optimize neural networks for NVIDIA's system. In this post, let's get started with an introduction to my project and the hardware design of this system.</p>
 <h2 id="i-introduction">I. Introduction</h2>
 <h3 id="1-background-and-motivations">1. Background and motivations</h3>
 <p>Currently, smart driver assistance functions are gradually being improved and become a new criterion in the technology race among car manufacturers. However, there are a large number of old cars and also a large number of new low-end car models without an advanced driver-assistance system (ADAS).</p>
@@ -228,7 +228,7 @@
 <li>Code for Jetson Nano - contains all inference code for above models: <a href="https://github.com/vietanhdev/car-smart-cam">https://github.com/vietanhdev/car-smart-cam</a></li>
 </ul>
 <p>Give me Github Star if you think it is interesting. Note that this repository does not contain the source code for training and converting AI models. <del>I'll make them public as soon as possible.</del></p>
-<p><strong>Update 12/10/2020:</strong> The next post is about the software of this project. <a href="/posts/adas-jetson-nano-software/">Go to the next post now</a>.</p>
+<p><strong>Update 12/10/2020:</strong> The next post is about the software of this project. <a href="../../posts/adas-jetson-nano-software/">Go to the next post now</a>.</p>
 <p><strong>Update 15/11/2020:</strong> Add links to source code.</p>
 
     </div>
@@ -276,9 +276,9 @@
 <h2>Related Posts</h3>
 <ul>
     
-	<li><a href="/posts/adas-jetson-nano-deep-neural-networks/">Advanced driver-assistance system on Jetson Nano Part 3 - Deep neural networks</a></li>
+	<li><a href="../../posts/adas-jetson-nano-deep-neural-networks/">Advanced driver-assistance system on Jetson Nano Part 3 - Deep neural networks</a></li>
 	
-	<li><a href="/posts/adas-jetson-nano-software/">Advanced driver-assistance system on Jetson Nano Part 2 - Software design</a></li>
+	<li><a href="../../posts/adas-jetson-nano-software/">Advanced driver-assistance system on Jetson Nano Part 2 - Software design</a></li>
 	
 </ul>
 
@@ -350,7 +350,7 @@
 </svg>
 <footer class="footer">
   <div class="footer_inner wrap pale">
-    <img alt="MWONGERA EVANS" src='https://aicurious.io/icons/apple-touch-icon.png' class="icon icon_2 transparent">
+    <img alt="MWONGERA EVANS" src='https://test-blog-ciwr.onrender.com/icons/apple-touch-icon.png' class="icon icon_2 transparent">
     <p>Copyright &copy;&nbsp;<span class="year">2022</span>&nbsp;Mwongera Evans. All Rights Reserved
     </p><a class="to_top" href="#documentTop">
   <svg class="icon">
@@ -360,7 +360,7 @@
 
   </div>
 </footer>
-<script defer src="/tocbot/tocbot.min.js"></script>
+<script defer src="../../tocbot/tocbot.min.js"></script>
 <script>
     function docReady(fn) {
         
@@ -532,7 +532,7 @@ function purecookieDismiss() {
 window.onload = function() { cookieConsent(); };
 
 </script>
-    <script type="text/javascript" src="https://aicurious.io/js/bundle.min.2f0b59b1dfdaf78b5a983152cca57c5d238178ce262268c3a511d19dc04f1dee770beb9ca2a833f2cd92967dc8bcecdb6c413ff82cac874b1bf473ad2f57db4c.js" integrity="sha512-LwtZsd/a94tamDFSzKV8XSOBeM4mImjDpRHRncBPHe53C&#43;ucoqgz8s2Sln3IvOzbbEE/&#43;Cysh0sb9HOtL1fbTA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://test-blog-ciwr.onrender.com/js/bundle.min.740886abfe4b690e35421b2b670c7a7ae400eb450bb638acf55dd5852c3ba47290801edd63419ec7a68d0955069d13c54311f65d949018bf20ed80402f4d2973.js" integrity="sha512-dAiGq/5LaQ41QhsrZwx6euQA60ULtjis9V3VhSw7pHKQgB7dY0Gex6aNCVUGnRPFQxH2XZSQGL8g7YBAL00pcw==" crossorigin="anonymous"></script>
     
   </body>
 </html>

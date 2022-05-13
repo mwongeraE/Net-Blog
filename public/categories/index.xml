@@ -2,34 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Mwongera Evans</title>
-    <link>https://aicurious.io/categories/</link>
+    <link>https://test-blog-ciwr.onrender.com/categories/</link>
     <description>Recent content in Categories on Mwongera Evans</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aicurious.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://test-blog-ciwr.onrender.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI Projects</title>
-      <link>https://aicurious.io/categories/ai-projects/</link>
+      <link>https://test-blog-ciwr.onrender.com/categories/ai-projects/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://aicurious.io/categories/ai-projects/</guid>
+      <guid>https://test-blog-ciwr.onrender.com/categories/ai-projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Self-Driving Cars</title>
-      <link>https://aicurious.io/categories/self-driving-cars/</link>
+      <link>https://test-blog-ciwr.onrender.com/categories/self-driving-cars/</link>
       <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://aicurious.io/categories/self-driving-cars/</guid>
+      <guid>https://test-blog-ciwr.onrender.com/categories/self-driving-cars/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web Development</title>
-      <link>https://aicurious.io/categories/web-development/</link>
+      <link>https://test-blog-ciwr.onrender.com/categories/web-development/</link>
       <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://aicurious.io/categories/web-development/</guid>
+      <guid>https://test-blog-ciwr.onrender.com/categories/web-development/</guid>
       <description></description>
     </item>
     
