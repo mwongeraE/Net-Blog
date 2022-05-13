@@ -1,0 +1,34 @@
+{{ $pages := .Pages }}
+{{ if .IsHome }}
+  {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{ end }}
+<div class="grid-inverse wrap content">
+  <div>
+    {{ if eq .IsHome false }}
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-description">{{ .Description }}</p>
+    {{ end }}
+    {{.Content}}
+    <ul class="posts" id="posts">
+      <div class="post-feed" data-infinite-scroll='{ "path": ".next-page-btn", "append": ".post-card", "history": false, "hideNav": ".pagination-wrapper" }'>
+        {{- range (.Paginate $pages).Pages }}
+          {{ partial "excerpt" . }}
+        {{- end }}
+        {{ $paginator := .Paginator }}
+      </div>
+      <li class="pagination-wrapper">
+        {{ if $paginator.HasNext }}
+          <a class="next-page-btn page-link" href="{{ $paginator.Next.URL }}">
+            Next Page
+          </a>
+        {{ end }}
+        <!-- {{- template "_internal/pagination.html" . }} -->
+      </li>
+    </ul>
+  </div>
+  
+  {{- partial "sidebar" . }}
+</div>
+
+<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+
