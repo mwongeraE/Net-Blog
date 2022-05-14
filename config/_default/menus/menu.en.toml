@@ -9,6 +9,11 @@
   weight = 20
 
 [[main]]
+  name = "Python"
+  url = "/python/"
+  weight = 20
+
+[[main]]
   name = "Author"
   url = "/about/"
   weight = 30
@@ -21,7 +26,7 @@
 
 [[main]]
   name = "AICurious"
-  url = "https://aicurious.io/"
+  url = "/"
   parent = "Links"
   weight = 10
 
