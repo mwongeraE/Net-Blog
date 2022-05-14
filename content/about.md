@@ -2,10 +2,10 @@
 title: "About me"
 slug: "/about/"
 discussionId: "/about/"
-date: 2020-10-10
+date: 2022-05-14
 ---
 
-<img id="my-photo" alt="Viet Anh Nguyen" src="/images/engineer.png">
+<img id="my-photo" alt="Viet Anh Nguyen" src="/images/logo1.png">
 <style>
 #my-photo {
     width: 16rem;
