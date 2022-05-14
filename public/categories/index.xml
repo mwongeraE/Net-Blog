@@ -16,6 +16,24 @@
     </item>
     
     <item>
+      <title>Backend</title>
+      <link>https://test-blog-ciwr.onrender.com/categories/backend/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test-blog-ciwr.onrender.com/categories/backend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Frontend</title>
+      <link>https://test-blog-ciwr.onrender.com/categories/frontend/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test-blog-ciwr.onrender.com/categories/frontend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Self-Driving Cars</title>
       <link>https://test-blog-ciwr.onrender.com/categories/self-driving-cars/</link>
       <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
