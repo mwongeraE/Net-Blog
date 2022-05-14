@@ -46,8 +46,8 @@ series = "series"
   notes = "/:slug/"
 
 [params]
-author = "Viet-Anh Nguyen"
-twitter = "@vietanhdev"
+author = "Mwongera Evans"
+twitter = "@mwongera"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
 introDescription = "Building AI-powered systems. AI modeling and deployment skills for developers, students, and researchers."
 description = "Building AI-powered systems. AI modeling and deployment skills for developers, students, and researchers." # set your site's description here. will be use for home page content meta tags (seo). Alternatively set this description in your homepage content file i.e content/_index.md. Whatever is set in the latter will take precedence
