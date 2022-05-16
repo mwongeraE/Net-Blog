@@ -1,21 +1,18 @@
 ---
-title: "Build a Pushup counter app with OpenCV and Deep learning 23"
-date: 2021-02-15
-categories: ["Backend"]
+title: "Python test"
+date: 2022-05-14
+categories: ["Frontend"]
 tags:
-- Keypoint Detection
-- Signal Processing
-- Counter
+- Python
+- Testing
 description: "My team has designed and built a desktop app which can analyze and count the number of pushups. With this intelligence feature and an attractive user interface, our application is expected to make workout more enjoyable. This post will share you our design and implementation of this idea."
-thumbnail: "/posts/2021-02-15-build-a-pushup-counter/screenshot.png"
-slug: "/posts/2021-02-15-build-a-pushup-counter/"
-discussionId: "/posts/2021-02-15-build-a-pushup-counter/"
+thumbnail: "posts/2022-05-14-python-test/clothes.jpg"
+slug: "/posts/2022-05-14-python-test/"
+discussionId: "/posts/2022-05-14-python-test/"
 math: true
 toc: true
 draft: false
 ---
-
-![Darth Varder](darth.png)
 
 Since 2019, the raging COVID-19 epidemic has claimed the lives of many people and forced many countries to take measures to blockade and isolate. Exercising at home is becoming a new way to improve people's health and protect them from the Corona virus. Many people responded to the 30-day push-ups challenge with the hashtag #pushupchallenge on social networks as a way to encourage each other to take some physical activities. [My team](https://vnopenai.org/our-team/) has designed and built a desktop app that can analyze and count the number of pushups. With this intelligence feature and an attractive user interface, our application is expected to make fitness more enjoyable. This post will share with you our design and implementation of this idea.
 
