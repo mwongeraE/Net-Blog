@@ -9,7 +9,7 @@
   weight = 20
 
 [[main]]
-  name = "Python"
+  name = "Projects & Tests"
   url = "/test/"
   weight = 20
 
