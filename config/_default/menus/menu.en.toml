@@ -10,7 +10,7 @@
 
 [[main]]
   name = "Python"
-  url = "/python/"
+  url = "/test/"
   weight = 20
 
 
