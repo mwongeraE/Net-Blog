@@ -5,7 +5,7 @@ discussionId: "/about/"
 date: 2022-05-14
 ---
 
-<img id="my-photo" alt="Mwongera Evans" src="/images/logo1.png">
+<img id="my-photo" alt="Mwongera Evans (Software)" src="/images/logo1.png">
 <style>
 #my-photo {
     width: 16rem;
