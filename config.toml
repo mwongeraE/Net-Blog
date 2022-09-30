@@ -49,8 +49,8 @@ series = "series"
 author = "Mwongera Evans"
 twitter = "@mwongera"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
-introDescription = "Building AI-powered systems. AI modeling and deployment skills for developers, students, and researchers."
-description = "Building AI-powered systems. AI modeling and deployment skills for developers, students, and researchers." # set your site's description here. will be use for home page content meta tags (seo). Alternatively set this description in your homepage content file i.e content/_index.md. Whatever is set in the latter will take precedence
+introDescription = "Building secure Software and deployment skills for developers, students, and researchers."
+description = "Building Secure applications. Software engineering and deployment skills for developers, students, and researchers." # set your site's description here. will be use for home page content meta tags (seo). Alternatively set this description in your homepage content file i.e content/_index.md. Whatever is set in the latter will take precedence
 searchTypes = ["posts", "notes"]
 
 codeLineNumbers = true
@@ -104,15 +104,15 @@ talkyardServerUrl = "https://comments-for-aicurious-io.talkyard.net"
 talkyardScriptUrl = "https://c1.ty-cdn.net/-/talkyard-comments.min.js"
 
 # Contact form
-contactFormSubmitUrl = "https://formspree.io/xaypalea"
+contactFormSubmitUrl = "https://formspree.io/f/meqdgyll"
 
 # Buy me a coffee
 # Comment below line to disable
-buyMeACoffeeId = "vietanhdev"
+buyMeACoffeeId = "1noobdev"
 
 # MailChimp Subscriber form
 # Comment below line to disable
-mailChimpUrl = "https://vietanhdev.us13.list-manage.com/subscribe/post?u=c5f9d88238b4c0ec0106fe459&amp;id=e74e121dc8"
+mailChimpUrl = "http://eepurl.com/h_-nVz"
 
 # Google Adsense
 # adsenseDataAdClient = ""

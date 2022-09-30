@@ -2,7 +2,7 @@
 title: "Meet the droid"
 slug: "/about/"
 discussionId: "/about/"
-date: 2022-05-14
+date: 2022-09-22
 ---
 
 <img id="my-photo" alt="Mwongera Evans (Software)" src="/images/logo1.png">
@@ -11,7 +11,7 @@ date: 2022-05-14
     width: 16rem;
     margin:0;
     padding: 0;
-    margin: 1rem 1rem 0.5rem 0;
+    margin: 0rem 1rem 0.5rem 0;
     border-radius: 50%;
     clear: both;
 }
@@ -22,10 +22,46 @@ date: 2022-05-14
 }
 </style>
 
-**Hello!** I'm **Mwongera Evans** - A Machine Learning & Robotics Engineer.
+**Hello!** I'm **Mwongera Evans** - A Software Engineer.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Erat velit scelerisque in dictum. Ut ornare lectus sit amet. Eu lobortis elementum nibh tellus molestie. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Id nibh tortor id aliquet lectus proin nibh nisl condimentum. Faucibus vitae aliquet nec ullamcorper sit amet. Eget nulla facilisi etiam dignissim. Dignissim diam quis enim lobortis scelerisque fermentum. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla. Condimentum id venenatis a condimentum vitae sapien pellentesque habitant morbi. Donec ac odio tempor orci dapibus. Cras ornare arcu dui vivamus arcu felis bibendum ut tristique.
+Software engineer with more than 5 years of experience in analysis, design, development, testing and implementations of various internet based applications.
 
-Habitasse platea dictumst vestibulum rhoncus est. Turpis egestas sed tempus urna et. Dui faucibus in ornare quam viverra orci. Amet luctus venenatis lectus magna fringilla urna. Velit euismod in pellentesque massa placerat duis ultricies lacus. Ac odio tempor orci dapibus ultrices. Sapien eget mi proin sed libero enim sed faucibus turpis. Rhoncus dolor purus non enim. Et malesuada fames ac turpis egestas. Ultrices vitae auctor eu augue. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Amet aliquam id diam maecenas ultricies mi eget mauris pharetra. Orci phasellus egestas tellus rutrum. Et malesuada fames ac turpis egestas integer eget aliquet nibh. 
+Experirnced in all stages of the development cycle for dynamic and secure projects.
+
+## EXPERIENCE
+- **Goodinfo Consulting, Nairobi Kenya (2020 - Present)**
+- **Africa's Talking - Labs, Nairobi Kenya (Nov 2018 - July 2020)**
+- **Health Ed. Solutions, Nairobi (2017)**
+
+
+## SKILLS
+
+**Version Control and CI/CD pipelines :**
+- Bitbucket, Git, Gitlab, Github, AWS code commit
+
+**Programming languages :**
+- Node JS, Javascript, Typescript, Java, Python
+
+**Frontend development :**
+- Vue, React, Html, CSS, Less
+
+**Middleware :**
+- Redis, RabbitMQ, Redux, Express framework, Mongoose, Django, Flask, Swagger
+
+**Backend development :**
+- REST apis, GraphQL, MongoDB, PosrgreSQL, MySQL
+
+**Mobile app development :**
+- Java, Kotlin, Flutter
+
+**Cloud :**
+- AWS, GCP, Prometheus, Grafana
+
+**Testing :**
+- Mocha, Jest
+
+**Soft Skills :**
+- Great verbal and written communication, collaboration and eager to learn new skills.
+
 
 C.R.E.A.M

@@ -4,12 +4,17 @@
   weight = 10
 
 [[main]]
-  name = "Notes"
+  name = "Articles"
+  url = "/posts/"
+  weight = 20
+
+[[main]]
+  name = "JS"
   url = "/notes/"
   weight = 20
 
 [[main]]
-  name = "Projects & Tests"
+  name = "Python"
   url = "/test/"
   weight = 20
 
@@ -26,23 +31,17 @@
   weight = 45
 
 [[main]]
-  name = "AICurious"
-  url = "/"
+  name = "Github"
+  url = "https://github.com/mwongeraE"
   parent = "Links"
   weight = 10
 
 [[main]]
-  name = "HUGO Framework"
-  url = "https://gohugo.io/"
-  parent = "Links"
-  weight = 20
-
-[[main]]
-  name = "<img src=\"/icons/mail.svg\" style=\"height:1.2rem; display: inline; margin: 0;\">"
+  name = "<img src=\"/icons/mail.svg\" style=\"height:1.2rem; display: inline; margin: 5px;\"> Contact"
   url = "/contact/"
   weight = 50
 
 [[main]]
-  name = "<img src=\"/icons/search.svg\" style=\"height:1.2rem; display: inline; margin: 0;\">"
+  name = "<img src=\"/icons/search.svg\" style=\"height:1.2rem; display: inline; margin: 5px;\"> Search"
   url = "/search/"
   weight = 60
