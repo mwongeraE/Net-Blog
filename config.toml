@@ -100,7 +100,7 @@ numberOfRecentPosts = 8
 numberOfFeaturedPosts = 8
 
 # Comment
-talkyardServerUrl = "https://comments-for-aicurious-io.talkyard.net"
+talkyardServerUrl = "https://blog-tests.talkyard.net"
 talkyardScriptUrl = "https://c1.ty-cdn.net/-/talkyard-comments.min.js"
 
 # Contact form

@@ -1,5 +1,5 @@
 ---
-title: "Build a Pushup counter app with OpenCV and Deep learning 23"
+title: "Build a Pushup counter app with OpenCV and Deep learning"
 date: 2021-02-15
 categories: ["AI Projects"]
 tags:
@@ -7,7 +7,7 @@ tags:
 - Signal Processing
 - Counter
 description: "My team has designed and built a desktop app which can analyze and count the number of pushups. With this intelligence feature and an attractive user interface, our application is expected to make workout more enjoyable. This post will share you our design and implementation of this idea."
-thumbnail: "/posts/2021-02-15-build-a-pushup-counter/pushup-counter.png"
+thumbnail: "images/flask.png"
 slug: "/posts/2021-02-15-build-a-pushup-counter/"
 discussionId: "/posts/2021-02-15-build-a-pushup-counter/"
 math: true

@@ -6,7 +6,7 @@ tags:
 - ADAS
 - Jetson Nano
 description: "Recently, I have built a prototype of an advanced driver-assistance system (ADAS) using a Jetson Nano computer. In this post, I focus on 2 machine learning modules and three deep neural networks which were used in my ADAS project."
-thumbnail: /posts/adas-jetson-nano-deep-neural-networks/mapillary-vista-preprocessing.png
+thumbnail: "images/darth.png"
 slug: "/posts/adas-jetson-nano-deep-neural-networks/"
 discussionId: "/posts/adas-jetson-nano-deep-neural-networks/"
 math: true

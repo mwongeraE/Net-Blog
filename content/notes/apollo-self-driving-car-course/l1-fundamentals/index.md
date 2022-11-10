@@ -1,6 +1,6 @@
 ---
 title: "[MOOC] Apollo Lesson 1: SDC Fundamentals"
-thumbnail: "/posts/apollo-sdc-lesson-1-fundamentals/apollo.jpg"
+thumbnail: "images/vue.png"
 discussionId: "/posts/apollo-sdc-lesson-1-fundamentals/"
 date: 2021-01-25
 toc: true

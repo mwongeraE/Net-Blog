@@ -8,22 +8,19 @@ draft: false
 slug: "/posts/express-js-intro/"
 categories: ["Javascript"]
 tags: ["Express JS", "Graphql", PostgreSQL]
-description: "GraphQL is a middleware that allows the user to have one endpoint to handle most requests on your express server. The benefits of using this: "
+description: "GraphQL is a middleware that allows the user to have one endpoint to handle most requests on your express server. There are many benefits of using this. "
 ---
+To sart here are some advantages of using graphql:
 
 - Avoids having to create many routes to handle everything
 - Avoids over-fetching and under-fetching data
 - This works concurrently with API routes so the server can still be RESTful
-
----
 
 **Install devDependencies**
 
 `npm init -y`
 
 `npm install @babel/core @babel/node @babel/preset-env nodemon --save-dev`
-
----
 
 **Setting Up the Express server**
 
@@ -60,7 +57,7 @@ Install sequelize and its drivers. Sequelize will convert the javascript code in
 Create a new folder called database and a models folder inside that and a models.js file in that. Here the actual models will be made. Import sequelize and create a new instance of Sequelize passing in a string with the name of the database “postgres://localhost:5432/devtest”
 
 `import Sequelize from 'sequelize'`
-`const sequelize = new Sequelize('postgres://localhost:5432/devtest')`
+`const sequelize = new Sequelize(`postgres://localhost:5432/devtest`)`
 
 On this same file create a model. In this example, a user model is created with only a firstName property that must be set to valid because allowNull is set to false. Each property must have a Sequelize type. More Seqeulize types can be found in the Sequelize documentation. These datatypes ensure the information stored is of the same type.
 
@@ -88,10 +85,7 @@ Export this database so it can be used for the graphQL schemas.
 
 `export default sequelize;`
 
----
-
 **Setting up GraphQL Schema**
-
 Inside the *database* folder create a *schema* folder and in there create a *schema.js* file. Import the sequelize file.
 
 `import db from '../models/models'`

@@ -1,6 +1,6 @@
 ---
 title: "[DEV] Testing Software Page"
-thumbnail: "/posts/apollo-sdc-lessons-intro/rocky.jpeg"
+thumbnail: "/posts/express-js-intro/expressjs.png"
 discussionId: "/posts/apollo-sdc-lessons-intro/"
 date: 2021-02-04
 toc: true

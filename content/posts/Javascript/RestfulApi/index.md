@@ -1,29 +1,80 @@
 ---
-title: "How to Setup a GraphQL, Express and postgreSQL Server"
-thumbnail: "/posts/express-js-intro/expressjs.png"
+title: "Building a RESTful web service"
+thumbnail: "/posts/rest-api/REST.png"
 discussionId: "/posts/express-js-intro/"
 date: 2021-02-04
 toc: true
 draft: false
-slug: "/posts/express-js-intro/"
+slug: "/posts/rest-api/"
 categories: ["Javascript"]
 tags: ["Express JS", "Graphql", PostgreSQL]
-description: "GraphQL is a middleware that allows the user to have one endpoint to handle most requests on your express server. The benefits of using this: "
+description: "Suppose you want to create a to-do list web service with Node, involving thhe typical create, read, update and delete(CRUD) actions. These actions can be implemented in many ways, but in this article we'll focus on  creating a RESTful web service "
 ---
+By convention, HTTP verbs, such as GET, POST, PUT, and DELETE, are mapped to retrieving, creating, updating, and removing the resources specified by the URL. RESTful web services have gained in popularity because they’re simple to utilize and implement in comparison to protocols such as the Simple Object Access Protocol (SOAP).
 
-- Avoids having to create many routes to handle everything
-- Avoids over-fetching and under-fetching data
-- This works concurrently with API routes so the server can still be RESTful
+We'll use cURL (http://curl.haxx.se/download.html) in place of a web browser to interact with our web service.
 
----
+To create a compliant REST server, you need to implement the 4 HTTP verbs. Each verb will cover a different task for the to-do list:
 
-**Install devDependencies**
+- POST - Add items to the to-do list
+- GET - Display a listing of current items, or display a single item
+- DELETE - Remove items from the to-do list
+- PUT - Should modify existing items.
 
+To illustrate the end result, here's an example of creating a new item in the to-do list using `curl` command:
+
+`curl -d 'Practice node js'`
+
+And for viewing items in the to-do list:
+
+`curl http://localhost:3000`
+
+**Creating resources with POST requests**
+
+```
+var http = require('http')
+var url = require('url')
+var items = []
+
+var server = http.createServer(function(req, res) {
+  switch (req.method)
+    case 'POST':
+      var item = ''; // Set up string buffer for the incoming item
+      req.setEncoding('utf8') // a chunk is now utf8 instead of a buffer
+      req.on('data', function(chunk){ // a chunk is by default a buffer object
+        item += chunk; // Concatenate data chunk onto the buffer
+      })
+
+      req.on('end', function() {  //'end' event is fired when everything has been read
+        items.push(item) // Push complete new item onto the items array
+        res.end('OK\n')
+      })
+      break;
+})
+```
+
+**Fetching resources with GET requests.**
+
+To handle the GET verb, add it to the same switch statement as before, followed by the logic for listing the to-do items. In the following example, the first call to res.write() will write the header with the default fields, as well as the data passed to it:
+
+```
+case 'GET':
+items.forEach(function(item, i) {
+  res.write(i + ') ' + item + '\n')
+})
+res.end();
+break;
+```
+Now that the app can display the items, it’s time to give it a try! Fire up a terminal,
+start the server, and POST some items using curl. The -d flag automatically sets the
+request method to POST and passes in the value as POST data:
+
+`curl -d 'buy groceries' http://localhost:3000`
+`curl -d 'buy node in action' http://localhost:3000`
+ 
 `npm init -y`
 
 `npm install @babel/core @babel/node @babel/preset-env nodemon --save-dev`
-
----
 
 **Setting Up the Express server**
 
@@ -60,7 +111,7 @@ Install sequelize and its drivers. Sequelize will convert the javascript code in
 Create a new folder called database and a models folder inside that and a models.js file in that. Here the actual models will be made. Import sequelize and create a new instance of Sequelize passing in a string with the name of the database “postgres://localhost:5432/devtest”
 
 `import Sequelize from 'sequelize'`
-`const sequelize = new Sequelize('postgres://localhost:5432/devtest')`
+`const sequelize = new Sequelize(`postgres://localhost:5432/devtest`)`
 
 On this same file create a model. In this example, a user model is created with only a firstName property that must be set to valid because allowNull is set to false. Each property must have a Sequelize type. More Seqeulize types can be found in the Sequelize documentation. These datatypes ensure the information stored is of the same type.
 
@@ -88,10 +139,7 @@ Export this database so it can be used for the graphQL schemas.
 
 `export default sequelize;`
 
----
-
 **Setting up GraphQL Schema**
-
 Inside the *database* folder create a *schema* folder and in there create a *schema.js* file. Import the sequelize file.
 
 `import db from '../models/models'`
