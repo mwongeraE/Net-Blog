@@ -29,7 +29,33 @@ And for viewing items in the to-do list:
 
 `curl http://localhost:3000`
 
+---
+
 **Creating resources with POST requests**
+
+In RESTful terminology, the creation of a resource is typically mapped to the POST
+verb. Therefore, POST will create an entry in the to-do list.
+
+In Node, you can check which HTTP method (verb) is being used by checking the
+req.method property  . When you know which method the
+request is using, your server will know which task to perform.
+
+When Node’s HTTP parser reads in and parses request data, it makes that data
+available in the form of data events that contain chunks of parsed data ready to be
+handled by the program:
+
+By default, the data events provide `Buffer` objects, which are Node’s version of byte
+arrays. In the case of textual to-do items, you don’t need binary data, so setting the
+stream encoding to `ascii` or `utf8` is ideal; the data events will instead emit strings.
+This can be set by invoking the `req.setEncoding(encoding)` method:
+
+In the case of a to-do list item, you need to have the entire string before it can be
+added to the array. One way to get the whole string is to concatenate all of the chunks
+of data until the `end` event is emitted, indicating that the request is complete. After the
+`end` event has occurred, the item string will be populated with the entire contents of
+the request body, which can then be pushed to the `items` array. When the item has
+been added, you can end the request with the string `OK` and Node’s default status code
+of 200. The following listing shows this in the todo.js file.
 
 ```
 var http = require('http')
@@ -53,6 +79,8 @@ var server = http.createServer(function(req, res) {
 })
 ```
 
+---
+
 **Fetching resources with GET requests.**
 
 To handle the GET verb, add it to the same switch statement as before, followed by the logic for listing the to-do items. In the following example, the first call to res.write() will write the header with the default fields, as well as the data passed to it:
@@ -71,204 +99,119 @@ request method to POST and passes in the value as POST data:
 
 `curl -d 'buy groceries' http://localhost:3000`
 `curl -d 'buy node in action' http://localhost:3000`
- 
-`npm init -y`
 
-`npm install @babel/core @babel/node @babel/preset-env nodemon --save-dev`
-
-**Setting Up the Express server**
-
-First thing to do is install express and make an *index.js* file
-
-`npm install express`
-
-This server will be using the Hello World! example from express documentation but with some small changes to incorporate import.
+Next, to GET the list of to-do list items, you can execute curl without any flags, as GET is
+the default verb:
 
 ```
-import express from 'express'
-const app = express()
-const port = 3000app.get('/', (req, res) => {
-  res.send('Hello World!')
-})app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+$ curl http://localhost:3000
+0) buy groceries
+1) buy node in action
+
 ```
-
-The simple server is up and running here and needs sequelize models.
-
 ---
 
-**Setting up models with sequelize**
+**Setting the content-length header.**
 
-Create a postgreSQL database using the below command, this server's database will be called *devtest*
+To speed up responses, the Content-Length field should be sent with your response
+when possible. In the case of the item list, the body can easily be constructed ahead of
+time in memory, allowing you to access the string length and flush the entire list in
+one shot. Setting the Content-Length header implicitly disables Node’s chunked
+encoding, providing a performance boost because less data needs to be transferred.
 
-`createdb devtest`
-
-Install sequelize and its drivers. Sequelize will convert the javascript code into SQL but pg and pg-hstore communicate with postgreSQL and make the actual changes.
-
-`npm install sequelize pg pg-hstore.`
-
-Create a new folder called database and a models folder inside that and a models.js file in that. Here the actual models will be made. Import sequelize and create a new instance of Sequelize passing in a string with the name of the database “postgres://localhost:5432/devtest”
-
-`import Sequelize from 'sequelize'`
-`const sequelize = new Sequelize(`postgres://localhost:5432/devtest`)`
-
-On this same file create a model. In this example, a user model is created with only a firstName property that must be set to valid because allowNull is set to false. Each property must have a Sequelize type. More Seqeulize types can be found in the Sequelize documentation. These datatypes ensure the information stored is of the same type.
+An optimized version of the GET handler could look something like this:
 
 ```
-const User = sequelize.define('user', {
-  // attributes
-  firstName: {
-    type: Sequelize.STRING,
-    allowNull: false
+var body = items.map(function(item, i){
+return i + ') ' + item;
+}).join('\n');
+res.setHeader('Content-Length', Buffer.byteLength(body));
+res.setHeader('Content-Type', 'text/plain; charset="utf-8"');
+res.end(body);
+```
+You may be tempted to use the body.length value for the Content-Length, but the
+Content-Length value should represent the byte length, not character length, and the
+two will be different if the string contains multibyte characters. To avoid this problem,
+Node provides the Buffer.byteLength() method.
+
+The following Node REPL session illustrates the difference by using the string
+length directly, as the five-character string is comprised of seven bytes:
+
+```
+$ node
+> 'etc …'.length
+5
+> Buffer.byteLength('etc …')
+7
+```
+---
+
+**Removing resources with DELETE requests.**
+
+Finally, the `DELETE` verb will be used to remove an item. To accomplish this, the app
+will need to check the requested URL, which is how the HTTP client will specify which
+item to remove. In this case, the identifier will be the array index in the items array;
+for example, `DELETE /1` or `DELETE /5`.
+
+The requested URL can be accessed with the req.url property, which may contain
+several components depending on the request. For example, if the request was `DELETE
+/1?api-key=foobar`, this property would contain both the pathname and query string
+`/1?api-key=foobar`.
+
+To parse these sections, Node provides the url module, and specifically the
+`.parse()` function. The following node REPL session illustrates the use of this function,
+parsing the URL into an object, including the `pathname` property you’ll use in the
+DELETE handler:
+
+```
+$ node
+> require('url').parse('http://localhost:3000/1?api-key=foobar')
+{ protocol: 'http:',
+slashes: true,
+host: 'localhost:3000',
+port: '3000',
+hostname: 'localhost',
+href: 'http://localhost:3000/1?api-key=foobar',
+search: '?api-key=foobar',
+query: 'api-key=foobar',
+pathname: '/1',
+path: '/1?api-key=foobar' }
+
+```
+
+`url.parse()` parses out only the pathname for you, but the item ID is still a string. In
+order to work with the ID within the application, it should be converted to a number.
+A simple solution is to use the `String.slice()` method, which returns a portion of
+the string between two indexes. In this case, it can be used to skip the first character,
+giving you just the number portion, still as a string. To convert this string to a number,
+it can be passed to the JavaScript global function `parseInt()`, which returns a Number.
+
+The code below first does a couple of checks on the input value, because you can never
+trust user input to be valid, and then it responds to the request. If the number is “not
+a number” (the JavaScript value NaN), the status code is set to 400 indicating a Bad
+Request. Following that, the code checks if the item exists, responding with a 404 Not
+Found error if it doesn’t. After the input has been validated, the item can be removed
+from the items array, and then the app will respond with 200, OK.
+
+```
+case 'DELETE': // Add DELETE case to switch statement
+  var path = url.parse(req.url).pathname;
+  var i = parseInt(path.slice(1), 10);
+  if (isNaN(i)) { // Check if number is valid
+    res.statusCode = 400;
+    res.end('Invalid item id');
+  } else if (!items[i]) { // Ensure requested index exists
+    res.statusCode = 404;
+    res.end('Item not found');
+  } else {
+    items.splice(i, 1); // Delete requested item
+    res.end('OK\n');
   }
-})
+  break;
 ```
 
-Put some example data to have a better look at whats going on.
+A complete RESTful service would also implement the PUT HTTP verb, which
+should modify an existing item in the to-do list. We encourage you to try implementing
+this final handler yourself, using the techniques used in this REST server so far.
 
-```
-sequelize.sync({ force: true }).then(() => {
-  return User.create({
-    firstName: 'Dons'
-  })
-})
-```
-
-Export this database so it can be used for the graphQL schemas.
-
-`export default sequelize;`
-
-**Setting up GraphQL Schema**
-Inside the *database* folder create a *schema* folder and in there create a *schema.js* file. Import the sequelize file.
-
-`import db from '../models/models'`
-
-There are special graphQL datatypes that will be needed. This example will use the ones below.
-
-`import {GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLNonNull } from 'graphql'`
-
-Since graphQL is a middleware, special graphQL objects are needed in order for graphQL to know what to do. For this example,
-
-```
-const User = new GraphQLObjectType({
-  name: 'User',
-  description: 'this represents a user',
-  fields: () => {
-    return {
-      id: {
-        type: GraphQLInt,
-        resolve(user) {
-          return user.id
-        }
-      },
-      firstName: {
-        type: GraphQLString,
-        resolve(user) {
-          return user.firstName
-        }
-      }
-    }
-  }
-})
-```
-The GraphQLObjectType that was created above is a graphQL schema for the Sequelize model that was made for the Users model above. Each field corresponds to a field in the Sequelize model and has a graphql type that dictates what the datatype should be. GraphQL handles the promise received from Sequelize when requests are made through the resolve function.
-
-That is just the Schema for a user, to make a query a whole new GraphQLObjectType needs to be made. This one has some extra fields and the GraphQL datatype is GraphQLList(User) which refers to the schema that was made above. The resolve function also works a bit differently from the User Schema as it as a 2nd parameter, “args”. “args” is the data that will be passed in.
-
-```
-const Query = new GraphQLObjectType({
-  name: 'Query',
-  description: 'this is a root query',
-  fields: () => {
-    return {
-      users: {
-        type: new GraphQLList(User),
-        args: {
-          id: {
-            type: GraphQLInt
-          },
-          firstName: {
-            type: GraphQLString
-          }
-        },
-        //validations can go here
-        resolve(root, args) {
-          return db.models.user.findAll({ where: args })
-        }
-      }
-    }
-  }
-})
-```
-
-That is just for making a query. In order to make post requests a GraphQLObjectType called mutation needs to be made. This is similar to the query GraphQLObjectType but in it, changes to the database will be made.
-
-```
-const Mutation = new GraphQLObjectType({
-  name: 'Mutation',
-  description: 'Functions to create things',
-  fields: () => {
-    return {
-      addUser: {
-        type: User,
-        args: {
-          firstName: {
-            type: new GraphQLNonNull(GraphQLString)
-          }
-        },
-        resolve(_, args) {
-          return UserModel.create({
-            firstName: args.firstName
-          })
-        }
-      }
-    }
-  }
-})
-```
-
-Finally to connect it all together GraphQLSchema must be called and initialized with the Query and Mutation objects that were made. This Schema has to be exported to be connected in the *index.js* file.
-
-```
-const Schema = new GraphQLSchema({
-  query: Query,
-  mutation: Mutation
-})
-```
-
-`export default Schema`
-
-With all the schemas and models set up, the server is finally ready to use the middleware.
-
-`import { graphqlHTTP } from 'express-graphql'`
-`import Schema from './database/schema/schema'`
-
-Create a new express route passing the graphqlHTTP middleware. In this server, it will be ‘graphql’ route.
-
-```
-import express from 'express'
-import { graphqlHTTP } from 'express-graphql'
-import Schema from './database/schema/schema'
-
-const app = express()
-const port = 3000
-
-app.use('/graphql', graphqlHTTP({ schema: Schema, graphiql: true }))
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
-```
-
-As mentioned earlier, graphQL and RESTful API’s can work concurrently so that the ‘/’ route still works.
-
-To test the ‘/graphql’ route npm install graphiql, an easy to use GUI to test queries then go to ‘http://localhost:3000/graphql’
-
-`npm install graphiql`
-
-![graphql](express-test1.png)
+---
