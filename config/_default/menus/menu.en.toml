@@ -4,13 +4,8 @@
   weight = 10
 
 [[main]]
-  name = "Articles"
+  name = "Javascript"
   url = "/posts/"
-  weight = 20
-
-[[main]]
-  name = "JS"
-  url = "/notes/"
   weight = 20
 
 [[main]]
@@ -18,11 +13,15 @@
   url = "/test/"
   weight = 20
 
+[[main]]
+  name = "Other Artcles"
+  url = "/notes/"
+  weight = 30
 
 [[main]]
   name = "Author"
   url = "/about/"
-  weight = 30
+  weight = 40
 
 [[main]]
   name = "Links"
