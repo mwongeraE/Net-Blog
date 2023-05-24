@@ -1,6 +1,6 @@
 ---
 title: "Building a RESTful web service"
-thumbnail: "/posts/rest-api/REST.png"
+thumbnail: "images/api.jpg"
 discussionId: "/posts/express-js-intro/"
 date: 2021-02-04
 toc: true

@@ -1,6 +1,6 @@
 ---
 title: "How to Setup a GraphQL, Express and postgreSQL Server"
-thumbnail: "/posts/express-js-intro/expressjs.png"
+thumbnail: "images/graphql.png"
 discussionId: "/posts/express-js-intro/"
 date: 2021-02-04
 toc: true

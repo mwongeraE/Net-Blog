@@ -1,6 +1,6 @@
 ---
 title: "Securing your application with HTTPS"
-thumbnail: "/posts/securing-app-with-https/REST.png"
+thumbnail: "images/lock.png"
 discussionId: "/posts/securing-app-with-https/"
 date: 2021-02-04
 toc: true

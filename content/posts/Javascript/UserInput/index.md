@@ -1,6 +1,6 @@
 ---
 title: "Accepting user input from forms"
-thumbnail: "/posts/accepting-user-input-from-forms/REST.png"
+thumbnail: "images/form.jpg"
 discussionId: "/posts/accepting-user-input-from-forms/"
 date: 2021-02-04
 toc: true

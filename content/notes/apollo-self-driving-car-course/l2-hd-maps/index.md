@@ -1,6 +1,6 @@
 ---
 title: "[MOOC] Apollo Lesson 2: HD Maps"
-thumbnail: "images/vuetify.png"
+thumbnail: "images/apollo.jpg"
 discussionId: "/posts/apollo-sdc-lesson-2-hd-maps/"
 date: 2021-01-26
 toc: true

@@ -1,6 +1,6 @@
 ---
 title: "[MOOC] Apollo Lesson 3: Localization"
-thumbnail: "images/Android.jpg"
+thumbnail: "images/apollo.jpg"
 discussionId: "/posts/apollo-sdc-lesson-3-localization/"
 date: 2021-01-27
 toc: true
