@@ -1,5 +1,5 @@
 # Personal blog
 
-## Built with Hugo Site Generator
+## Built with Hugo
 
-## Theme: Hugo-Curious
+## *Write more articles
