@@ -2,117 +2,95 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Mwongera Evans</title>
-    <link>https://test-blog-ciwr.onrender.com/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Mwongera Evans</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://test-blog-ciwr.onrender.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Counter</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/counter/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/counter/</guid>
+      <title>Index</title>
+      <link>http://localhost:1313/tags/index/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/index/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Keypoint Detection</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/keypoint-detection/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/keypoint-detection/</guid>
+      <title>Node JS</title>
+      <link>http://localhost:1313/tags/node-js/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/node-js/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Signal Processing</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/signal-processing/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/signal-processing/</guid>
+      <title>Python</title>
+      <link>http://localhost:1313/tags/python/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/python/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>Virtual Environment</title>
+      <link>http://localhost:1313/tags/virtual-environment/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/virtual-environment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Testing</title>
+      <link>http://localhost:1313/tags/testing/</link>
+      <pubDate>Sat, 14 May 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Express JS</title>
+      <link>http://localhost:1313/tags/express-js/</link>
+      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/express-js/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graphql</title>
+      <link>http://localhost:1313/tags/graphql/</link>
+      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/graphql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PostgreSQL</title>
+      <link>http://localhost:1313/tags/postgresql/</link>
+      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/postgresql/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Apollo</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/apollo/</link>
-      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/apollo/</guid>
+      <link>http://localhost:1313/tags/apollo/</link>
+      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/apollo/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Computer Vision</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/computer-vision/</link>
-      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/computer-vision/</guid>
+      <link>http://localhost:1313/tags/computer-vision/</link>
+      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/computer-vision/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>Technology</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/technology/</link>
-      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/technology/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/web/</link>
-      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ADAS</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/adas/</link>
-      <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/adas/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jetson Nano</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/jetson-nano/</link>
-      <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/jetson-nano/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>Configuration</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/config/</link>
+      <link>http://localhost:1313/tags/config/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/config/</guid>
+      <guid>http://localhost:1313/tags/config/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>index</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/index/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/index/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>Opengraph</title>
-      <link>https://test-blog-ciwr.onrender.com/tags/og/</link>
+      <link>http://localhost:1313/tags/og/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://test-blog-ciwr.onrender.com/tags/og/</guid>
+      <guid>http://localhost:1313/tags/og/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

@@ -1,0 +1,16 @@
+{
+  "name": "net-blog",
+  "version": "1.0.0",
+  "description": "Personal blog built with Hugo",
+  "author": "Mwongera Evans",
+  "scripts": {
+    "build": "npm install -g autoprefixer postcss postcss-cli && hugo --gc --minify --buildDrafts=false",
+    "build:optimized": "npm install -g autoprefixer postcss postcss-cli && hugo --gc --minify --buildDrafts=false"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0"
+  },
+  "devDependencies": {}
+}
