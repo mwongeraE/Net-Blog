@@ -36,11 +36,11 @@
   weight = 10
 
 [[main]]
-  name = "<img src=\"/icons/mail.svg\" style=\"height:1.2rem; display: inline; margin: 5px;\"> Contact"
-  url = "/contact/"
+  name = "Contact"
+  url = "/about/"
   weight = 50
 
 [[main]]
-  name = "<img src=\"/icons/search.svg\" style=\"height:1.2rem; display: inline; margin: 5px;\"> Search"
+  name = "Search"
   url = "/search/"
   weight = 60

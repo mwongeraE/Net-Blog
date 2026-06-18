@@ -1,1 +1,96 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Mwongera Evans</title><link>/tags/</link><description>Recent content in Tags on Mwongera Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Index</title><link>/tags/index/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>/tags/index/</guid><description/></item><item><title>Node JS</title><link>/tags/node-js/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>/tags/node-js/</guid><description/></item><item><title>Python</title><link>/tags/python/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>/tags/python/</guid><description/></item><item><title>Virtual Environment</title><link>/tags/virtual-environment/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>/tags/virtual-environment/</guid><description/></item><item><title>Testing</title><link>/tags/testing/</link><pubDate>Sat, 14 May 2022 00:00:00 +0000</pubDate><guid>/tags/testing/</guid><description/></item><item><title>Express JS</title><link>/tags/express-js/</link><pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate><guid>/tags/express-js/</guid><description/></item><item><title>Graphql</title><link>/tags/graphql/</link><pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate><guid>/tags/graphql/</guid><description/></item><item><title>PostgreSQL</title><link>/tags/postgresql/</link><pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate><guid>/tags/postgresql/</guid><description/></item><item><title>Apollo</title><link>/tags/apollo/</link><pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate><guid>/tags/apollo/</guid><description/></item><item><title>Computer Vision</title><link>/tags/computer-vision/</link><pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate><guid>/tags/computer-vision/</guid><description/></item><item><title>Configuration</title><link>/tags/config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/tags/config/</guid><description/></item><item><title>Opengraph</title><link>/tags/og/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/tags/og/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Mwongera Evans</title>
+    <link>//localhost:1313/tags/</link>
+    <description>Recent content in Tags on Mwongera Evans</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Index</title>
+      <link>//localhost:1313/tags/index/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/index/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Node JS</title>
+      <link>//localhost:1313/tags/node-js/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/node-js/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>//localhost:1313/tags/python/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Virtual Environment</title>
+      <link>//localhost:1313/tags/virtual-environment/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/virtual-environment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Testing</title>
+      <link>//localhost:1313/tags/testing/</link>
+      <pubDate>Sat, 14 May 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Express JS</title>
+      <link>//localhost:1313/tags/express-js/</link>
+      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/express-js/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graphql</title>
+      <link>//localhost:1313/tags/graphql/</link>
+      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/graphql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PostgreSQL</title>
+      <link>//localhost:1313/tags/postgresql/</link>
+      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/postgresql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Apollo</title>
+      <link>//localhost:1313/tags/apollo/</link>
+      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/apollo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Computer Vision</title>
+      <link>//localhost:1313/tags/computer-vision/</link>
+      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Configuration</title>
+      <link>//localhost:1313/tags/config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/config/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Opengraph</title>
+      <link>//localhost:1313/tags/og/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/og/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

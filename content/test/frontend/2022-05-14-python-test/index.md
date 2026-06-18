@@ -18,7 +18,7 @@ Since 2019, the raging COVID-19 epidemic has claimed the lives of many people an
 
 First, I want to share with you our interesting demonstration before going into details.
 
-{{< youtube "pm2mGmgwSZo" >}}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pm2mGmgwSZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 1. System Analysis and Design
 

@@ -1,0 +1,19 @@
+/* Logo styling - icon size */
+.logo-icon {
+  height: 40px; /* Standard icon size. Adjust between 32px and 48px */
+  width: 40px;
+  object-fit: cover; /* Ensures the image doesn't distort */
+  border-radius: 50%; /* Makes it a perfect circle */
+  transition: transform 0.6s ease-in-out;
+}
+
+.logo-link:hover .logo-icon {
+  transform: rotate(360deg);
+}
+
+.header-menu .logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
