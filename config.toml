@@ -1,7 +1,6 @@
 # set `baseurl` to your root domain
 # if you set it to "/" share icons won't work properly on production
-baseurl = "/"  # Use relative URL
-relativeURLs = "true"
+baseurl = "https://mwongera.online/"
 title = "HugoCurious"
 author = "Mwongera Evans"
 #canonifyurls = true

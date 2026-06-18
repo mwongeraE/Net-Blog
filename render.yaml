@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: mwongera-blog
+    runtime: static
+    repo: https://github.com/Livour/Net-Blog
+    branch: main
+    buildCommand: git submodule update --init --recursive && hugo --gc --minify --buildDrafts=false
+    staticPublishPath: public
+    pullRequestPreviewsEnabled: false
+    envVars:
+      - key: HUGO_VERSION
+        value: 0.123.7
