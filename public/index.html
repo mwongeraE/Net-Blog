@@ -141,7 +141,7 @@
 
 
 
-<link rel="stylesheet" href="/css/bundle.min.0bdbe83d20703f93a974bae00aba9cfe9ecf614b3507fd67e68168ecdfac93aa.css">
+<link rel="stylesheet" href="/css/bundle.min.bac5e6790f85011157598b67b419a719fb067a5321005bf03dd4dc7f25050244.css">
 
 
 
@@ -179,35 +179,353 @@
 
 
 
-    <style>
-#rain-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden; }
-.rain { position: absolute; z-index: -1; pointer-events: none; }
-.drop { width: 1px; background: linear-gradient(180deg, transparent, var(--accent-primary)); animation: drop 0.8s linear infinite both; }
-.rain1 { left: 10%; top: 0%; } .rain1 .drop { height: 3rem; animation-duration: 2.0s; } .rain2 { left: 20%; top: 10%; } .rain2 .drop { height: 4rem; animation-duration: 3.2s; } .rain3 { left: 30%; top: 20%; } .rain3 .drop { height: 1.5rem; animation-duration: 2.4s; } .rain4 { left: 40%; top: 5%; } .rain4 .drop { height: 2.5rem; animation-duration: 4.4s; } .rain5 { left: 50%; top: 15%; } .rain5 .drop { height: 3rem; animation-duration: 3.2s; } .rain6 { left: 60%; top: 0%; } .rain6 .drop { height: 2rem; animation-duration: 3.6s; } .rain7 { left: 70%; top: 25%; } .rain7 .drop { height: 1.8rem; animation-duration: 2.8s; } .rain8 { left: 80%; top: 5%; } .rain8 .drop { height: 3.5rem; animation-duration: 3.2s; } .rain9 { left: 90%; top: 15%; } .rain9 .drop { height: 2.2rem; animation-duration: 4.8s; } .rain10 { left: 15%; top: 30%; } .rain10 .drop { height: 2.8rem; animation-duration: 2.2s; } .rain11 { left: 35%; top: 35%; } .rain11 .drop { height: 1.8rem; animation-duration: 4.0s; } .rain12 { left: 55%; top: 40%; } .rain12 .drop { height: 3.2rem; animation-duration: 2.6s; } .rain13 { left: 75%; top: 30%; } .rain13 .drop { height: 2.5rem; animation-duration: 3.4s; } .rain14 { left: 85%; top: 40%; } .rain14 .drop { height: 1.5rem; animation-duration: 3.8s; } .rain15 { left: 5%; top: 20%; } .rain15 .drop { height: 3.5rem; animation-duration: 3.0s; } .rain16 { left: 45%; top: 0%; } .rain16 .drop { height: 2rem; animation-duration: 4.6s; } .rain17 { left: 95%; top: 10%; } .rain17 .drop { height: 3rem; animation-duration: 2.4s; } .rain18 { left: 25%; top: 0%; } .rain18 .drop { height: 1.8rem; animation-duration: 4.0s; } .rain19 { left: 65%; top: 20%; } .rain19 .drop { height: 2.5rem; animation-duration: 2.8s; } .rain20 { left: 50%; top: 30%; } .rain20 .drop { height: 3.5rem; animation-duration: 2.0s; }
-@keyframes drop { 0% { opacity: 0; transform: translateY(-10vh); } 20% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(100vh); } }
-</style>
-<div id="rain-bg">
-  <div class="rain rain1"><div class="drop"></div></div>
-  <div class="rain rain2"><div class="drop"></div></div>
-  <div class="rain rain3"><div class="drop"></div></div>
-  <div class="rain rain4"><div class="drop"></div></div>
-  <div class="rain rain5"><div class="drop"></div></div>
-  <div class="rain rain6"><div class="drop"></div></div>
-  <div class="rain rain7"><div class="drop"></div></div>
-  <div class="rain rain8"><div class="drop"></div></div>
-  <div class="rain rain9"><div class="drop"></div></div>
-  <div class="rain rain10"><div class="drop"></div></div>
-  <div class="rain rain11"><div class="drop"></div></div>
-  <div class="rain rain12"><div class="drop"></div></div>
-  <div class="rain rain13"><div class="drop"></div></div>
-  <div class="rain rain14"><div class="drop"></div></div>
-  <div class="rain rain15"><div class="drop"></div></div>
-  <div class="rain rain16"><div class="drop"></div></div>
-  <div class="rain rain17"><div class="drop"></div></div>
-  <div class="rain rain18"><div class="drop"></div></div>
-  <div class="rain rain19"><div class="drop"></div></div>
-  <div class="rain rain20"><div class="drop"></div></div>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+
+(function () {
+  'use strict';
+
+  const CONFIG = {
+    fontSize: 20,
+    count: 0,
+    speed: 0.08,
+    colorDark: 0x00ff41,
+    colorLight: 0x6b21a8,
+  };
+
+  let scene, camera, renderer;
+  let positions, velocities, characters, charLengths;
+  let pointCloud;
+  let canvas, ctxTexture;
+  let width, height;
+
+  function getThemeColor() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    return theme === 'light' ? CONFIG.colorLight : CONFIG.colorDark;
+  }
+
+  function generateTexture() {
+    canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    ctxTexture = canvas.getContext('2d');
+    ctxTexture.font = 'Bold 48px monospace';
+    ctxTexture.textAlign = 'center';
+    ctxTexture.textBaseline = 'middle';
+    ctxTexture.fillStyle = '#ffffff';
+    ctxTexture.fillText('1', 32, 32);
+    return new THREE.CanvasTexture(canvas);
+  }
+
+  function init() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    
+    scene = new THREE.Scene();
+
+    
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
+    camera.position.z = 1;
+
+    
+    renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: false,
+    });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
+    renderer.domElement.style.position = 'fixed';
+    renderer.domElement.style.top = '0';
+    renderer.domElement.style.left = '0';
+    renderer.domElement.style.width = '100vw';
+    renderer.domElement.style.height = '100vh';
+    renderer.domElement.style.zIndex = '-1';
+    renderer.domElement.style.pointerEvents = 'none';
+    renderer.domElement.id = 'matrix-rain-three';
+    document.body.prepend(renderer.domElement);
+
+    
+    const texture = generateTexture();
+
+    
+    const cols = Math.floor(width / CONFIG.fontSize);
+    const rows = Math.floor(height / CONFIG.fontSize) + 10;
+    CONFIG.count = cols;
+    const total = cols * rows;
+
+    
+    const geometry = new THREE.BufferGeometry();
+    positions = new Float32Array(total * 3);
+    velocities = new Float32Array(cols);
+    characters = new Float32Array(total);
+    charLengths = rows;
+
+    
+    for (let i = 0; i < cols; i++) {
+      velocities[i] = Math.random() * 0.1 + 0.02;
+      for (let j = 0; j < rows; j++) {
+        const idx = i * rows + j;
+        positions[idx * 3] = (i / cols) * 2 - 1;
+        positions[idx * 3 + 1] = 1 - (j / rows) * 2;
+        positions[idx * 3 + 2] = 0;
+        characters[idx] = Math.random();
+      }
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    
+    const material = new THREE.PointsMaterial({
+      size: CONFIG.fontSize / Math.min(width, height) * 2,
+      map: texture,
+      transparent: true,
+      opacity: 0.6,
+      color: getThemeColor(),
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      sizeAttenuation: false,
+    });
+
+    pointCloud = new THREE.Points(geometry, material);
+    scene.add(pointCloud);
+
+    window.addEventListener('resize', onResize);
+    animate();
+  }
+
+  function updateTextureChar(char) {
+    ctxTexture.clearRect(0, 0, 64, 64);
+    ctxTexture.fillStyle = '#ffffff';
+    ctxTexture.fillText(char, 32, 32);
+    pointCloud.material.map.needsUpdate = true;
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    
+    const positionsAttr = pointCloud.geometry.attributes.position;
+    const pos = positionsAttr.array;
+    const cols = CONFIG.count;
+    const rows = charLengths;
+    const heightPx = window.innerHeight;
+
+    for (let i = 0; i < cols; i++) {
+      
+      const offset = velocities[i] * CONFIG.speed;
+      for (let j = rows - 1; j >= 0; j--) {
+        const idx = i * rows + j;
+        
+        if (j > 0) {
+          const aboveIdx = i * rows + (j - 1);
+          pos[idx * 3 + 1] = pos[aboveIdx * 3 + 1] - offset;
+          characters[idx] = characters[aboveIdx];
+        } else {
+          
+          pos[idx * 3 + 1] = pos[(i * rows + (rows - 1)) * 3 + 1] + offset;
+          characters[idx] = Math.random();
+        }
+      }
+
+      
+      const bottomIdx = i * rows + (rows - 1);
+      if (pos[bottomIdx * 3 + 1] < -1) {
+        const resetY = 1 + Math.random() * 2;
+        for (let j = 0; j < rows; j++) {
+          const idx = i * rows + j;
+          pos[idx * 3 + 1] = resetY - (j / rows) * 3;
+        }
+        velocities[i] = Math.random() * 0.1 + 0.02;
+      }
+    }
+
+    positionsAttr.needsUpdate = true;
+    renderer.render(scene, camera);
+  }
+
+  function onResize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    renderer.setSize(width, height);
+  }
+
+  
+  const observer = new MutationObserver(() => {
+    if (pointCloud) {
+      pointCloud.material.color.setHex(getThemeColor());
+    }
+  });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+    <div class="meteors-container" id="meteors-container" aria-hidden="true"></div>
+
+<script>
+
+(function () {
+  'use strict';
+
+  const CONFIG = {
+    meteorCount: 8,       
+    minDuration: 3,       
+    maxDuration: 8,       
+    minDelay: 1,          
+    maxDelay: 12,         
+    colors: [
+      'var(--meteor-color-1, #c485f6)',
+      'var(--meteor-color-2, #dbabff)',
+      'var(--meteor-color-3, #b063e0)',
+      'var(--meteor-color-4, #00ffff)',
+    ],
+  };
+
+  const container = document.getElementById('meteors-container');
+  if (!container) return;
+
+  
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function getThemeColors() {
+    const style = getComputedStyle(document.documentElement);
+    return [
+      style.getPropertyValue('--meteor-color-1').trim() || '#c485f6',
+      style.getPropertyValue('--meteor-color-2').trim() || '#dbabff',
+      style.getPropertyValue('--meteor-color-3').trim() || '#b063e0',
+      style.getPropertyValue('--meteor-color-4').trim() || '#00ffff',
+    ];
+  }
+
+  let keyframeIndex = 0;
+  const keyframeStyle = document.createElement('style');
+  document.head.appendChild(keyframeStyle);
+
+  function createMeteor() {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'meteor';
+
+    const body = document.createElement('div');
+    body.className = 'meteor-body';
+
+    
+    const startX = random(0, 100);       
+    const startY = random(-30, 20);       
+    const duration = random(CONFIG.minDuration, CONFIG.maxDuration);
+
+    
+    
+    const fallX = random(80, 350) + (50 - startX) * 2;
+    const fallY = random(350, 700);
+
+    
+    const kfName = `meteor-fall-${keyframeIndex++}`;
+    keyframeStyle.textContent += `
+@keyframes ${kfName} {
+  0% { opacity: 0; transform: translate(0, 0); }
+  4% { opacity: 1; }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate(${fallX}px, ${fallY}px); }
+}`;
+
+    
+    const colors = getThemeColors();
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    
+    const size = random(1.5, 3);
+    const tailLength = random(60, 120);
+
+    wrapper.style.cssText = `
+      left: ${startX}%;
+      top: ${startY}%;
+      animation: ${kfName} ${duration}s linear infinite;
+      animation-delay: ${random(CONFIG.minDelay, CONFIG.maxDelay)}s;
+    `;
+
+    body.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      color: ${color};
+      background: ${color};
+      box-shadow: 0 0 ${size * 2}px ${color}, 0 0 ${size * 4}px ${color};
+    `;
+    body.style.setProperty('--tail-length', `${tailLength}px`);
+
+    wrapper.appendChild(body);
+    return wrapper;
+  }
+
+  
+  function init() {
+    
+    const styleEl = document.createElement('style');
+    styleEl.textContent = `
+      .meteor-body::before {
+        width: var(--tail-length, 80px) !important;
+      }
+    `;
+    document.head.appendChild(styleEl);
+
+    
+    for (let i = 0; i < CONFIG.meteorCount; i++) {
+      const meteor = createMeteor();
+      container.appendChild(meteor);
+    }
+
+    
+    setInterval(() => {
+      const meteors = container.querySelectorAll('.meteor');
+      
+      if (meteors.length > 0) {
+        const idx = Math.floor(Math.random() * meteors.length);
+        const old = meteors[idx];
+        const replacement = createMeteor();
+        
+        old.replaceWith(replacement);
+      }
+    }, 15000); 
+  }
+
+  
+  const observer = new MutationObserver(() => {
+    const bodies = container.querySelectorAll('.meteor-body');
+    const colors = getThemeColors();
+    bodies.forEach((body, i) => {
+      const color = colors[i % colors.length];
+      body.style.color = color;
+      body.style.background = color;
+      body.style.boxShadow = `0 0 4px ${color}, 0 0 8px ${color}`;
+    });
+  });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
   </head>
   <body class="flex flex-col min-h-screen">
     <a href="#main-content" class="skip-to-main" aria-label="Skip to main content"
@@ -1274,11 +1592,14 @@
 </button>
 
     <div class="floating-rocket" aria-hidden="true">
-  <div class="rocket-body">
-    <img src="/images/rocket2.png" alt="" class="rocket-img" />
-  </div>
+  <img src="/images/rocket2.png" alt="" class="rocket-img" />
+</div>
+<div class="floating-rocket" aria-hidden="true">
+  <img src="/images/rocket2.png" alt="" class="rocket-img" />
 </div>
 
+
+    <script src="/js/rocket-flight.js"></script>
 
     
 

@@ -1,0 +1,70 @@
+/* Meteors / Shooting Stars Background Effect */
+
+.meteors-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.meteor {
+  position: absolute;
+  opacity: 0;
+}
+
+/* The visual body of the meteor - rotated to point southeast */
+.meteor-body {
+  position: relative;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  transform: rotate(65deg);
+}
+
+/* The trailing glow - rendered via pseudo-element */
+.meteor-body::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--tail-length, 80px);
+  height: 1.5px;
+  background: linear-gradient(to left, currentColor, transparent);
+  border-radius: 1px;
+  right: 100%;
+}
+
+/* Dark theme meteors - purple/cyan palette */
+:root {
+  --meteor-color-1: #c485f6; /* mid purple */
+  --meteor-color-2: #dbabff; /* light purple */
+  --meteor-color-3: #b063e0; /* primary purple */
+  --meteor-color-4: #00ffff; /* cyber cyan */
+}
+
+/* Light theme meteors - darker purple palette */
+[data-theme="light"] {
+  --meteor-color-1: #7c3aed;
+  --meteor-color-2: #9333ea;
+  --meteor-color-3: #6b21a8;
+  --meteor-color-4: #7e22ce;
+}
+
+/* Each meteor gets a unique keyframe injected via JavaScript,
+   so no shared keyframes are defined here. */
+
+/* Responsive: reduce meteors on small screens or if user prefers reduced motion */
+@media (max-width: 640px) {
+  .meteors-container {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meteors-container {
+    display: none;
+  }
+}

@@ -2,11 +2,11 @@
 /* Allows the Three.js canvas to show through while keeping content readable */
 
 body {
-  background-color: rgba(2, 6, 23, 0.95) !important;
+  background-color: rgba(2, 6, 23, 0.85) !important;
 }
 
 [data-theme="light"] body {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
 }
 
 /* Reduce the radial gradient intensity so it doesn't overpower the matrix */

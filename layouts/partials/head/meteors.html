@@ -1,0 +1,155 @@
+<div class="meteors-container" id="meteors-container" aria-hidden="true"></div>
+
+<script>
+// Meteors / Shooting Stars Background Effect
+(function () {
+  'use strict';
+
+  const CONFIG = {
+    meteorCount: 8,       // Number of active meteors
+    minDuration: 3,       // Minimum fall duration in seconds
+    maxDuration: 8,       // Maximum fall duration in seconds
+    minDelay: 1,          // Minimum initial delay in seconds
+    maxDelay: 12,         // Maximum initial delay in seconds
+    colors: [
+      'var(--meteor-color-1, #c485f6)',
+      'var(--meteor-color-2, #dbabff)',
+      'var(--meteor-color-3, #b063e0)',
+      'var(--meteor-color-4, #00ffff)',
+    ],
+  };
+
+  const container = document.getElementById('meteors-container');
+  if (!container) return;
+
+  // Detect if the browser prefers reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function getThemeColors() {
+    const style = getComputedStyle(document.documentElement);
+    return [
+      style.getPropertyValue('--meteor-color-1').trim() || '#c485f6',
+      style.getPropertyValue('--meteor-color-2').trim() || '#dbabff',
+      style.getPropertyValue('--meteor-color-3').trim() || '#b063e0',
+      style.getPropertyValue('--meteor-color-4').trim() || '#00ffff',
+    ];
+  }
+
+  let keyframeIndex = 0;
+  const keyframeStyle = document.createElement('style');
+  document.head.appendChild(keyframeStyle);
+
+  function createMeteor() {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'meteor';
+
+    const body = document.createElement('div');
+    body.className = 'meteor-body';
+
+    // Random starting position spread across the full page
+    const startX = random(0, 100);       // 0% to 100% from left (full width)
+    const startY = random(-30, 20);       // -30% to 20% from top (wide vertical spread)
+    const duration = random(CONFIG.minDuration, CONFIG.maxDuration);
+
+    // Compute fall distances based on starting position
+    // Meteors on the left travel further right; those on the right travel less
+    const fallX = random(80, 350) + (50 - startX) * 2;
+    const fallY = random(350, 700);
+
+    // Inject a unique keyframe for this meteor
+    const kfName = `meteor-fall-${keyframeIndex++}`;
+    keyframeStyle.textContent += `
+@keyframes ${kfName} {
+  0% { opacity: 0; transform: translate(0, 0); }
+  4% { opacity: 1; }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate(${fallX}px, ${fallY}px); }
+}`;
+
+    // Pick a color from the theme palette
+    const colors = getThemeColors();
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    // Random size variation
+    const size = random(1.5, 3);
+    const tailLength = random(60, 120);
+
+    wrapper.style.cssText = `
+      left: ${startX}%;
+      top: ${startY}%;
+      animation: ${kfName} ${duration}s linear infinite;
+      animation-delay: ${random(CONFIG.minDelay, CONFIG.maxDelay)}s;
+    `;
+
+    body.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      color: ${color};
+      background: ${color};
+      box-shadow: 0 0 ${size * 2}px ${color}, 0 0 ${size * 4}px ${color};
+    `;
+    body.style.setProperty('--tail-length', `${tailLength}px`);
+
+    wrapper.appendChild(body);
+    return wrapper;
+  }
+
+  // Update the keyframes to use custom tail lengths if needed
+  function init() {
+    // Inject a style to support variable tail lengths via custom property
+    const styleEl = document.createElement('style');
+    styleEl.textContent = `
+      .meteor-body::before {
+        width: var(--tail-length, 80px) !important;
+      }
+    `;
+    document.head.appendChild(styleEl);
+
+    // Create meteors in batches for staggered appearance
+    for (let i = 0; i < CONFIG.meteorCount; i++) {
+      const meteor = createMeteor();
+      container.appendChild(meteor);
+    }
+
+    // Periodically refresh meteors to keep the animation feeling fresh
+    setInterval(() => {
+      const meteors = container.querySelectorAll('.meteor');
+      // Remove and recreate one random meteor at a time
+      if (meteors.length > 0) {
+        const idx = Math.floor(Math.random() * meteors.length);
+        const old = meteors[idx];
+        const replacement = createMeteor();
+        // Copy over the computed animation delay so it's seamless
+        old.replaceWith(replacement);
+      }
+    }, 15000); // every 15 seconds, swap one meteor
+  }
+
+  // Watch for theme changes to update meteor colors
+  const observer = new MutationObserver(() => {
+    const bodies = container.querySelectorAll('.meteor-body');
+    const colors = getThemeColors();
+    bodies.forEach((body, i) => {
+      const color = colors[i % colors.length];
+      body.style.color = color;
+      body.style.background = color;
+      body.style.boxShadow = `0 0 4px ${color}, 0 0 8px ${color}`;
+    });
+  });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

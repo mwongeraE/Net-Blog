@@ -3,6 +3,7 @@
   <head>
     {{ partial "head.html" . }}
     {{ partial "head/matrix-rain.html" . }}
+    {{ partial "head/meteors.html" . }}
   </head>
   <body class="flex flex-col min-h-screen{{ if eq site.Language.LanguageDirection "rtl" }} rtl{{ end }}">
     <a href="#main-content" class="skip-to-main" aria-label="{{ i18n "skipToMain" }}"
@@ -28,6 +29,8 @@
     {{ partial "buy-me-coffee.html" . }}
     {{ partial "scroll-to-top.html" . }}
     {{ partial "floating-rocket.html" . }}
+
+    <script src="/js/rocket-flight.js"></script>
 
     {{ partial "head/js.html" . }}
   </body>
