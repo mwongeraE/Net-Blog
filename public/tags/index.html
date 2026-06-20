@@ -129,7 +129,7 @@
 
 
 
-<link rel="stylesheet" href="/css/bundle.min.ab3bbe3a3905b84f975c69bd0566c0d39e154c85ec1e6cf02ca6aefed5c2b4bb.css">
+<link rel="stylesheet" href="/css/bundle.min.85b394694ff445edfda06ca7fffef59fc8f76409e4f75a1302b47d14b9508e25.css">
 
 
 
@@ -165,6 +165,35 @@
 
 
 
+    <style>
+#rain-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden; }
+.rain { position: absolute; z-index: -1; pointer-events: none; }
+.drop { width: 1px; background: linear-gradient(180deg, transparent, var(--accent-primary)); animation: drop 0.8s linear infinite both; }
+.rain1 { left: 10%; top: 0%; } .rain1 .drop { height: 3rem; animation-duration: 2.0s; } .rain2 { left: 20%; top: 10%; } .rain2 .drop { height: 4rem; animation-duration: 3.2s; } .rain3 { left: 30%; top: 20%; } .rain3 .drop { height: 1.5rem; animation-duration: 2.4s; } .rain4 { left: 40%; top: 5%; } .rain4 .drop { height: 2.5rem; animation-duration: 4.4s; } .rain5 { left: 50%; top: 15%; } .rain5 .drop { height: 3rem; animation-duration: 3.2s; } .rain6 { left: 60%; top: 0%; } .rain6 .drop { height: 2rem; animation-duration: 3.6s; } .rain7 { left: 70%; top: 25%; } .rain7 .drop { height: 1.8rem; animation-duration: 2.8s; } .rain8 { left: 80%; top: 5%; } .rain8 .drop { height: 3.5rem; animation-duration: 3.2s; } .rain9 { left: 90%; top: 15%; } .rain9 .drop { height: 2.2rem; animation-duration: 4.8s; } .rain10 { left: 15%; top: 30%; } .rain10 .drop { height: 2.8rem; animation-duration: 2.2s; } .rain11 { left: 35%; top: 35%; } .rain11 .drop { height: 1.8rem; animation-duration: 4.0s; } .rain12 { left: 55%; top: 40%; } .rain12 .drop { height: 3.2rem; animation-duration: 2.6s; } .rain13 { left: 75%; top: 30%; } .rain13 .drop { height: 2.5rem; animation-duration: 3.4s; } .rain14 { left: 85%; top: 40%; } .rain14 .drop { height: 1.5rem; animation-duration: 3.8s; } .rain15 { left: 5%; top: 20%; } .rain15 .drop { height: 3.5rem; animation-duration: 3.0s; } .rain16 { left: 45%; top: 0%; } .rain16 .drop { height: 2rem; animation-duration: 4.6s; } .rain17 { left: 95%; top: 10%; } .rain17 .drop { height: 3rem; animation-duration: 2.4s; } .rain18 { left: 25%; top: 0%; } .rain18 .drop { height: 1.8rem; animation-duration: 4.0s; } .rain19 { left: 65%; top: 20%; } .rain19 .drop { height: 2.5rem; animation-duration: 2.8s; } .rain20 { left: 50%; top: 30%; } .rain20 .drop { height: 3.5rem; animation-duration: 2.0s; }
+@keyframes drop { 0% { opacity: 0; transform: translateY(-10vh); } 20% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(100vh); } }
+</style>
+<div id="rain-bg">
+  <div class="rain rain1"><div class="drop"></div></div>
+  <div class="rain rain2"><div class="drop"></div></div>
+  <div class="rain rain3"><div class="drop"></div></div>
+  <div class="rain rain4"><div class="drop"></div></div>
+  <div class="rain rain5"><div class="drop"></div></div>
+  <div class="rain rain6"><div class="drop"></div></div>
+  <div class="rain rain7"><div class="drop"></div></div>
+  <div class="rain rain8"><div class="drop"></div></div>
+  <div class="rain rain9"><div class="drop"></div></div>
+  <div class="rain rain10"><div class="drop"></div></div>
+  <div class="rain rain11"><div class="drop"></div></div>
+  <div class="rain rain12"><div class="drop"></div></div>
+  <div class="rain rain13"><div class="drop"></div></div>
+  <div class="rain rain14"><div class="drop"></div></div>
+  <div class="rain rain15"><div class="drop"></div></div>
+  <div class="rain rain16"><div class="drop"></div></div>
+  <div class="rain rain17"><div class="drop"></div></div>
+  <div class="rain rain18"><div class="drop"></div></div>
+  <div class="rain rain19"><div class="drop"></div></div>
+  <div class="rain rain20"><div class="drop"></div></div>
+</div>
   </head>
   <body class="flex flex-col min-h-screen">
     <a href="#main-content" class="skip-to-main" aria-label="Skip to main content"
@@ -517,7 +546,7 @@
         <div class="social-links">
   
     <a
-      href="https://github.com/Livour"
+      href="https://github.com/mwongeraE"
       target="_blank"
       rel="noopener noreferrer"
       class="social-link"
@@ -741,6 +770,18 @@
       d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
   </svg>
 </button>
+
+    <div class="floating-rocket" aria-hidden="true">
+  <div class="rocket-body">
+    <img src="/rocket.png" alt="" class="rocket-img" />
+    <div class="flame-container">
+      <div class="flame"></div>
+      <div class="flame"></div>
+      <div class="flame"></div>
+      <div class="flame"></div>
+    </div>
+  </div>
+</div>
 
 
     

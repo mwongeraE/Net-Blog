@@ -1,0 +1,34 @@
+/* Matrix Rain background overlay */
+/* Allows the Three.js canvas to show through while keeping content readable */
+
+body {
+  background-color: rgba(2, 6, 23, 0.95) !important;
+}
+
+[data-theme="light"] body {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Reduce the radial gradient intensity so it doesn't overpower the matrix */
+body {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(30, 58, 138, 0.15) 0%,
+    rgba(15, 23, 42, 0.25) 40%,
+    transparent 100%
+  ) !important;
+}
+
+[data-theme="light"] body {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(196, 133, 246, 0.1) 0%,
+    rgba(243, 232, 255, 0.2) 40%,
+    transparent 100%
+  ) !important;
+}
+
+/* Ensure the sticky header has some opacity for readability */
+.sticky-header {
+  backdrop-filter: blur(12px) !important;
+}

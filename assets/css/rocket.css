@@ -1,0 +1,44 @@
+/* Floating Rocket - Bottom Left Background */
+
+.floating-rocket {
+  position: fixed;
+  top: 50%;
+  left: 15%;
+  margin-left: -75px;
+  margin-top: -75px;
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
+  animation: rocketFloat 4s ease-in-out infinite;
+}
+
+.floating-rocket .rocket-img {
+  width: 150px;
+  height: auto;
+  display: block;
+  position: relative;
+  opacity: 1;
+  image-rendering: auto;
+}
+
+@keyframes rocketFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-7deg);
+  }
+}
+
+/* Responsive: hide on very small screens */
+@media (max-width: 480px) {
+  .floating-rocket {
+    display: none;
+  }
+}
