@@ -1,0 +1,351 @@
+{{ define "main" }}
+<div class="search-page-wrapper">
+  <div class="search-page-container">
+    <h1 class="search-page-title">{{ .Title }}</h1>
+    <p class="search-page-description">{{ i18n "searchPlaceholder" | default "Search articles..." }}</p>
+
+    <div class="search-page-input-wrapper">
+      <svg class="search-page-input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </svg>
+      <input
+        type="search"
+        id="search-page-input"
+        class="search-page-input"
+        placeholder="{{ i18n "searchPlaceholder" | default "Type to search..." }}"
+        autocomplete="off"
+        autofocus
+        aria-label="{{ i18n "search" | default "Search" }}">
+      <button class="search-page-clear" id="search-page-clear" aria-label="{{ i18n "clearSearch" | default "Clear" }}">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id="search-page-results" class="search-page-results"></div>
+  </div>
+</div>
+
+<style>
+.search-page-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--spacing-xl, 2rem) var(--spacing-lg, 1rem);
+}
+
+.search-page-container {
+  width: 100%;
+}
+
+.search-page-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.search-page-description {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.search-page-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color var(--transition-fast, 0.2s);
+}
+
+.search-page-input-wrapper:focus-within {
+  border-color: var(--accent-primary);
+}
+
+.search-page-input-icon {
+  position: absolute;
+  left: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.search-page-input {
+  flex: 1;
+  height: 52px;
+  padding: 0 3rem 0 3rem;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.search-page-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-page-clear {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast, 0.2s);
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+}
+
+.search-page-clear.visible {
+  display: flex;
+}
+
+.search-page-clear:hover {
+  color: var(--accent-primary);
+}
+
+.search-page-clear svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.search-page-results {
+  margin-top: 1.5rem;
+}
+
+.search-page-results:empty {
+  display: none;
+}
+
+.search-page-result-item {
+  display: block;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  text-decoration: none;
+  transition: padding-left var(--transition-fast, 0.2s);
+}
+
+.search-page-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-page-result-item:hover {
+  padding-left: 0.5rem;
+}
+
+.search-page-result-title {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.search-page-result-title mark {
+  background-color: var(--accent-light-purple-rgba-03, rgba(147, 51, 234, 0.3));
+  color: var(--text-primary);
+  padding: 0.125rem 0;
+  border-radius: 2px;
+}
+
+.search-page-result-summary {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.search-page-result-summary mark {
+  background-color: var(--accent-light-purple-rgba-03, rgba(147, 51, 234, 0.3));
+  color: var(--text-primary);
+  padding: 0.125rem 0;
+  border-radius: 2px;
+}
+
+.search-page-result-date {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+}
+
+.search-page-result-date svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+}
+
+.search-page-result-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 3rem 0;
+  font-size: 1rem;
+}
+</style>
+
+<script>
+(function() {
+  const searchInput = document.getElementById('search-page-input');
+  const searchResults = document.getElementById('search-page-results');
+  const clearButton = document.getElementById('search-page-clear');
+  let searchIndex = [];
+  let searchTimeout = null;
+
+  // Load search index
+  async function loadIndex() {
+    try {
+      const indexUrl = window.MANA_SEARCH_INDEX_URL || '/index.json';
+      const response = await fetch(indexUrl);
+      if (response.ok) {
+        searchIndex = await response.json();
+      }
+    } catch (e) {
+      console.error('Search index failed to load:', e);
+    }
+  }
+
+  function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlightMatch(text, query) {
+    if (!text || !query) return text || '';
+    const trimmedQuery = query.trim();
+    if (!trimmedQuery) return text;
+    const escapedQuery = escapeRegex(trimmedQuery);
+    const regex = new RegExp(`(${escapedQuery})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+  }
+
+  function formatDate(dateString) {
+    if (!dateString) return '';
+    try {
+      const date = new Date(dateString);
+      return new Intl.DateTimeFormat(document.documentElement.lang || 'en', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      }).format(date);
+    } catch(e) {
+      return dateString;
+    }
+  }
+
+  function performSearch(query) {
+    const trimmedQuery = query ? query.trim() : '';
+    if (!trimmedQuery || trimmedQuery.length < 2) {
+      searchResults.innerHTML = '';
+      return;
+    }
+
+    const queryLower = trimmedQuery.toLowerCase();
+    const seenPermalinks = new Set();
+
+    const results = searchIndex
+      .filter(function(item) {
+        if (!item || !item.permalink) return false;
+        if (seenPermalinks.has(item.permalink)) return false;
+        seenPermalinks.add(item.permalink);
+
+        return (
+          (item.title && item.title.toLowerCase().includes(queryLower)) ||
+          (item.summary && item.summary.toLowerCase().includes(queryLower)) ||
+          (item.content && item.content.toLowerCase().includes(queryLower)) ||
+          (item.tags && item.tags.some(function(tag) { return tag.toLowerCase().includes(queryLower); }))
+        );
+      })
+      .slice(0, 10);
+
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="search-page-result-empty">' +
+        (document.getElementById('search-modal')?.dataset?.noResults || 'No results found') +
+        '</div>';
+      return;
+    }
+
+    searchResults.innerHTML = results.map(function(item) {
+      var html = '<a href="' + item.permalink + '" class="search-page-result-item">';
+      html += '<div class="search-page-result-title">' + highlightMatch(item.title || '', query) + '</div>';
+      if (item.summary) {
+        html += '<div class="search-page-result-summary">' + highlightMatch(item.summary.substring(0, 150), query) + '...</div>';
+      }
+      if (item.date) {
+        html += '<div class="search-page-result-date">' +
+          '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>' +
+          formatDate(item.date) + '</div>';
+      }
+      html += '</a>';
+      return html;
+    }).join('');
+  }
+
+  function debounceSearch(fn, delay) {
+    return function() {
+      var args = arguments;
+      var context = this;
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(function() {
+        fn.apply(context, args);
+      }, delay);
+    };
+  }
+
+  function toggleClearButton() {
+    if (searchInput.value.length > 0) {
+      clearButton.classList.add('visible');
+    } else {
+      clearButton.classList.remove('visible');
+    }
+  }
+
+  // Event listeners
+  if (searchInput) {
+    searchInput.addEventListener('input', debounceSearch(function(e) {
+      toggleClearButton();
+      performSearch(e.target.value);
+    }, 200));
+  }
+
+  if (clearButton) {
+    clearButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      searchInput.value = '';
+      searchResults.innerHTML = '';
+      toggleClearButton();
+      searchInput.focus();
+    });
+  }
+
+  // Load index on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadIndex);
+  } else {
+    loadIndex();
+  }
+})();
+</script>
+{{ end }}

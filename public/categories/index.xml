@@ -1,1 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on Mwongera Evans</title><link>https://mwongera.online/categories/</link><description>Recent content in Categories on Mwongera Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mwongera.online/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Frontend</title><link>https://mwongera.online/categories/frontend/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>https://mwongera.online/categories/frontend/</guid><description/></item><item><title>Node Js</title><link>https://mwongera.online/categories/node-js/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>https://mwongera.online/categories/node-js/</guid><description/></item><item><title>Python</title><link>https://mwongera.online/categories/python/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>https://mwongera.online/categories/python/</guid><description/></item><item><title>Javascript</title><link>https://mwongera.online/categories/javascript/</link><pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate><guid>https://mwongera.online/categories/javascript/</guid><description/></item><item><title>Self-Driving Cars</title><link>https://mwongera.online/categories/self-driving-cars/</link><pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate><guid>https://mwongera.online/categories/self-driving-cars/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Mwongera Evans</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on Mwongera Evans</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 20 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloud</title>
+      <link>http://localhost:1313/categories/cloud/</link>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Frontend</title>
+      <link>http://localhost:1313/categories/frontend/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/frontend/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Node Js</title>
+      <link>http://localhost:1313/categories/node-js/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/node-js/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>http://localhost:1313/categories/python/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Javascript</title>
+      <link>http://localhost:1313/categories/javascript/</link>
+      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Self-Driving Cars</title>
+      <link>http://localhost:1313/categories/self-driving-cars/</link>
+      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/self-driving-cars/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
